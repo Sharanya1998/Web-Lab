@@ -1,1 +1,28 @@
-
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet type="text/css" href="pro5.css" ?>
+<student>
+<stud>
+<USN>USN : 4VV16CS001</USN>
+<name>NAME : ABC</name>
+<clg>COLLEGE : VVCE</clg>
+<branch>BRANCH : Computer Science and Engineering</branch>
+<yr>YEAR : 2020</yr>
+<e-mail>E-Mail : vvcs@gmail.com</e-mail>
+</stud>
+<stud>
+<USN>USN : 4VV16IS090</USN>
+<name>NAME : PQR</name>
+<clg>COLLEGE : VVCE</clg>
+<branch>BRANCH : Information Science and Engineering</branch>
+<yr>YEAR : 2020</yr>
+<e-mail>E-Mail : vvis@gmail.com</e-mail>
+</stud>
+<stud>
+<USN>USN : 4VV16ME120</USN>
+<name>NAME : XYZ</name>
+<clg>COLLEGE : VVCE</clg>
+<branch>BRANCH : Mechanical Engineering</branch>
+<yr>YEAR : 2020</yr>
+<e-mail>E-Mail : vvme@gmail.com</e-mail>
+</stud>
+</student>
