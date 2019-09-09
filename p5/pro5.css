@@ -1,24 +1,25 @@
 student{
-display:block; margin-top:10px; 
+display:block; margin-top:30px; 
 }
 USN{
-display:block; margin-left:10px;font-size:15pt; color:Black;
+display:block; margin-top:30px;margin-left:10px;font-size:20pt; color:Red;
 }
 name{
-display:block; margin-left:20px;font-size:12pt; color:Red;
+display:block; margin-left:20px;font-size:15pt; color:Green;
 }
 clg{
-display:block; margin-left:20px;font-size:10pt; color:Green;
+display:block; margin-left:20px;font-size:12pt; color:Magenta;
 }
 branch{
-display:block; margin-left:20px;font-size:10pt; color:Magenta;
+display:block; margin-left:20px;font-size:12pt; color:Aqua;
 }
 yr{
-display:block; margin-left:20px;font-size:10pt; color:Purple;
+display:block; margin-left:20px;font-size:12pt; color:Coral;
 }
 e-mail{
-display:block; margin-left:20px;font-size:10pt; color:Blue;
+display:block; margin-left:20px;font-size:12pt; color:Grey;
 }
 student{
 max-width:50%;margin:auto; 
 }
+
