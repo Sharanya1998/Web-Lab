@@ -1,0 +1,462 @@
+<?php
+
+
+class Simple {} // empty class is created
+
+$object = new Simple(); // an object of class simple is created
+print_r($object); //We use the print_r() function to get information about the object 
+echo gettype($object), "\n"; //the gettype() function to get the type of the variable.
+
+
+class Person {
+
+    public $name = "";
+    private $age;
+}
+//We create an instance of the Person class and set the $name variable to "Jane". We use the -> operator to access the attributes of objects. 
+$p1 = new Person();
+$p1->name = "Jane";
+//We create another instance of the Person class. Here we set the variable to "Beky".
+$p2 = new Person();
+$p2->name = "Beky";
+//We print the contents of the variables to the console.
+echo $p1->name . "\n"; 
+echo $p2->name . "\n"; 
+
+
+// we have a Circle class. We define two methods.We have one member field. It is the radius of the circle. The public keyword is an access specifier. It tells that the variable is fully accessible from the outside world. 
+class Circle {
+
+    public $radius;
+
+    function setRadius($radius)//This is the setRadius() method. It is a normal PHP function. We call functions defined inside classes methods.  {
+        $this->radius = $radius; //$this variable is a special variable which we use to access the member fields from methods.
+    }
+
+    function area() { //The area() method returns the area of a circle. The M_PI is a built-in constant.
+    
+        return $this->radius * $this->radius * M_PI;
+    }
+}
+
+$c = new Circle();
+$c->setRadius(5);
+
+echo $c->area(), "\n";
+
+$p = new Person();
+$p->name = "Jane";
+#$p->age = 17;
+
+echo $p->name . "\n";
+
+
+// we have a Derived class which extends the Base class. The Base class has three member fields, all with different access modifiers. 
+class Base {
+    
+    public $name = "Base";
+    protected $id = 6124;
+    private $is_defined = "yes"; //The $is_defined member is not inherited. The private modifier prevents this.
+
+}
+
+class Derived extends Base {
+
+    public function info() { //The info() method has a public access modifier. This means, it can be called outside the class environment.
+        echo "This is Derived class\n";
+        echo "Members inherited: \n";
+
+        echo $this->name . "\n";
+        echo $this->id . "\n";
+        echo $this->is_defined . "\n";
+    }
+}
+
+$derived = new Derived();
+$derived->info();
+
+
+// we have a SysInfo class. It outputs some system information to the console. We have two private functions and one public. The private methods are here only for internal working of the SysInfo class. They are not meant to be called outside the class.
+class SysInfo {
+
+    private function get_date() {
+        return date("Y/m/d");
+    }
+
+    private function get_version() {
+        return phpversion();
+    }
+
+    public function getInfo() {
+        //We create an instance of the SysInfo class and call the publicly available getInfo() method. The getInfo() method uses internally the private methods to do its job.
+        $date = $this->get_date();
+        $version = $this->get_version();
+
+        echo "The date is: $date\n";
+        echo "The PHP version is: $version\n";
+    }
+}
+
+$sys = new SysInfo();
+$sys->getInfo();
+#$sys->get_date();
+
+class Sum {
+    
+    public function getSum() {
+    
+        $args = func_get_args(); //The func_get_args() function returns an array comprising a function's argument list.
+
+        if (empty($args)) return 0;
+
+        foreach ($args as $arg) {
+            $sum += $arg;
+        }
+
+        return $sum;
+    }
+}
+
+$s = new Sum();
+//We go through all members of the array, and calculate the sum.
+echo $s->getSum() . "\n" ;
+echo $s->getSum(5) . "\n" ;
+echo $s->getSum(3, 4) . "\n" ;
+echo $s->getSum(3, 4, 7) . "\n" ;
+
+
+    class Song { //We have a Song class. This class has a constructor that prints message to the console.
+
+    function __construct($song) //Constructors often take arguments.{
+        echo "Song $song is created \n";
+    }
+}
+
+$song = new Song("Bad romance");
+
+class Friend { //We have a Friend class with data members and methods.
+
+    private $born;
+    private $name;
+    //We have two variables in the class definition. The private keyword is an access modifier. It is a form of encapsulation. The private keyword is the most restrictive modifier. It allows only the object in question to access the variable. 
+    function __construct($name, $born) {
+        $this->name = $name;
+        $this->born = $born;
+    }
+
+    function getInfo() {
+        echo "My friend $this->name was born in $this->born\n";
+    }
+}
+//We create a Friend object with two arguments. Then we call the getInfo() method of the object. 
+$friend = new Friend("Monika", 1990);
+$friend->getInfo();
+
+class Math {
+
+    const PI = 3.14159265359; //The const keyword is used to define a constant.
+
+    public function getPI() {
+        echo self::PI;
+    }
+}
+
+$math = new Math();
+
+echo Math::PI, "\n"; //Class constants are accessed from within methods using the self keyword followed by two colons.
+echo $math->getPI(), "\n";
+
+
+// we have three classes: Cat, Dog, and Bird. We traverse the array and print the class for each array value.
+class Cat {}
+class Dog {}
+class Bird {}
+//We create an array of these objects.
+$objects = [ new Cat(), new Dog(), new Cat(), new Bird(), new Bird(), 
+             new Dog(), new Dog(), new Cat(), new Bird() ];
+
+shuffle($objects); //We shuffle the array. 
+
+foreach ($objects as $object) {
+
+    if ($object instanceof Cat) { // we use the instanceof keyword to find out the type of the class.
+        echo "It is a Cat\n";
+    } elseif ($object instanceof Dog) {
+        echo "It is a Dog\n";
+    } else if ($object instanceof Bird) {
+        echo "It is a Bird\n";
+    }
+}
+
+class Cat1 {
+
+    public $name;
+    public $age;
+
+    function __construct($name, $age) {
+        $this->age = $age;
+        $this->name = $name;
+    }
+
+    function __toString() {
+        return "Cat: $this->name, Age: $this->age \n";
+    }
+}
+
+$missy = new Cat1("Missy", 6); //The method prints the basic info about the object.We create two objects of the Cat class.
+$lucky = new Cat1("Lucky", 4);
+
+print $missy; 
+echo $lucky;
+
+class Base1 {
+    function __construct() {
+       echo "Construction of Base class \n";
+    }
+}
+
+class Derived1 extends Base1 {
+    function __construct() {
+        parent::__construct();
+        echo "Construction of Derived class \n";
+    }
+}
+
+$obj1 = new Base1();
+$obj2 = new Derived1(); 
+
+abstract class Being { 
+
+    protected $isAlive = true;
+   
+    public function isAlive() {
+    
+        if ($this->isAlive) {
+            echo "Being is alive\n";
+        } else {
+            echo "Being is not alive\n";
+        }
+    }
+
+    public function kill() {
+    
+        $this->isAlive = false;
+    }
+}
+
+abstract class Animal extends Being {
+
+    protected $age;
+
+    public function __construct($age) {
+        $this->age = $age;
+    }
+
+    protected function setAge($age) {
+        $this->age = $age;
+    }
+
+    public function getAge() {
+        return $this->age;
+    }
+}
+
+class Cat2 extends Animal {
+
+    private $name;
+
+    public function __construct($name, $age) {
+        $this->name = $name;
+        parent::__construct($age);
+    }
+
+    public function getName() {
+    
+        return $this->name;
+    }
+}
+
+$cat = new Cat2("Cici", 4);
+$cat->isAlive();
+echo $cat->getName() . " is " .  $cat->getAge() . " years old\n";
+$cat->kill();
+$cat->isAlive();
+
+abstract class Drawing {
+
+    protected $x = 0;
+    protected $y = 0;
+
+    public abstract function area();
+
+    public function getCoordinates() {
+    
+        echo "\$x is $this->x\n";
+        echo "\$y is $this->y\n";
+    }
+}
+
+class Circle1 extends Drawing {
+   
+    private $radius;
+
+    public function __construct($x, $y, $r) {
+    
+        $this->radius = $r;
+        $this->x = $x;
+        $this->y = $y;
+    }
+
+    public function area() {
+    
+        return $this->radius * $this->radius * pi();
+    }
+
+   public function __toString() {
+   
+       return "Circle, at x: $this->x, y: $this->y, radius: $this->radius";
+   }
+
+}
+
+$o = new Circle1(12, 45, 22);
+echo "$o \n";
+echo "Area of the circle: " . $o->area() . "\n";
+echo $o->getCoordinates();
+
+interface IInfo {
+
+    public function do_inform();
+}
+
+class Some implements IInfo {
+
+    public function do_inform() {
+        echo "This is a Some class\n";
+    }
+}
+
+$sm = new Some();
+$sm->do_inform();
+
+interface Device {
+
+    public function switch_on();
+    public function switch_off();
+}
+
+interface Volume {
+
+    public function volume_up();
+    public function volume_down();
+}
+
+interface Pluggable {
+
+    public function plug_in();
+    public function plug_off();
+}
+
+class CellPhone implements Device, Volume, Pluggable {
+
+    public function switch_on() { echo "Switching on\n"; }
+    public function switch_off() { echo "Switching off\n"; }
+
+    public function volume_up() { echo "Volume up\n"; }
+    public function volume_down() { echo "Volume down\n"; }
+
+    public function plug_in() { echo "Plugging in\n"; }
+    public function plug_off() { echo "Plugging off\n"; }
+}
+
+$o = new CellPhone();
+$o->switch_on();
+$o->volume_up();
+$o->plug_in();
+
+interface IInfo1 {
+
+    public function do_inform();
+}
+
+interface IVersion {
+
+    public function get_version();
+}
+
+interface ILog extends IInfo1, IVersion {
+
+    public function do_log();
+}
+
+
+class DBConnect implements ILog {
+
+    public function do_inform() {
+    
+        echo "This is a DBConnect class\n";
+    }
+
+    public function get_version() {
+    
+        echo "Version 1.02\n";
+    }
+
+    public function do_log() {
+    
+        echo "Logging\n";
+    }
+
+    public function connect() {
+    
+        echo "Connecting to the database\n";
+    }
+}
+
+$db = new DBConnect();
+$db->do_inform();
+$db->get_version();
+$db->do_log();
+$db->connect();
+
+abstract class Shape {
+    
+    private $x = 0;
+    private $y = 0;
+
+    public abstract function area();
+}
+
+class Rectangle extends Shape {
+
+    function __construct($x, $y) {
+        
+        $this->x = $x;
+        $this->y = $y;
+    }
+
+    function area() {
+        
+        return $this->x * $this->y;
+    }
+}
+
+class Square extends Shape {
+
+    function __construct($x) {
+        
+        $this->x = $x;
+    }
+
+    function area() {
+        
+        return $this->x * $this->x;
+    }
+}
+
+$shapes = [ new Square(5), new Rectangle(12, 4), new Square(8) ];
+
+foreach ($shapes as $shape) {
+    
+    echo $shape->area() . "\n";
+}
